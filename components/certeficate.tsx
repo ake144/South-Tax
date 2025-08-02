@@ -218,7 +218,7 @@ export default function Certificate({ data }: CertificateProps) {
                   <div className="border-2 border-emerald-300 w-full h-40 bg-emerald-100 flex items-center justify-center rounded-lg overflow-hidden">
                     {data.photo ? (
                       <Image
-                        src={"https://github.com/shadcn.png"}
+                        src={data.photo || "/placeholder.svg"}
                         alt="Business Owner"
                         width={120}
                         height={160}
@@ -245,77 +245,75 @@ export default function Certificate({ data }: CertificateProps) {
 
             {/* License Information */}
             <div className="lg:col-span-2">
-              <Card className="p-6 bg-gradient-to-br from-white to-emerald-50/50 border border-emerald-200 h-full">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-                  <div className="space-y-4">
-                    <div>
-                      <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide">
-                        Practice Only # /TIN
-                      </span>
-                      <div className="mt-1 p-2 bg-emerald-100 rounded border-l-4 border-emerald-500">
+              <div className="relative h-full">
+                {/* Unified Background for License Info */}
+                <div
+                  className="absolute inset-0 opacity-5 bg-cover bg-center rounded-lg"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%2310b981' fillOpacity='0.08'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                  }}
+                />
+
+                <Card className="relative p-4 bg-white/90 backdrop-blur-sm border border-emerald-200/50 h-full">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm h-full">
+                    <div className="space-y-3">
+                      <div className="p-3 bg-emerald-50/80 rounded-lg">
+                        <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide block mb-1">
+                          Practice Only # /TIN
+                        </span>
                         <span className="font-mono font-bold text-emerald-900">
                           {maskSensitiveData(data.licenseNumber)}
                         </span>
                       </div>
-                    </div>
 
-                    <div>
-                      <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide">
-                        Principal Registration No.
-                      </span>
-                      <div className="mt-1 p-2 bg-emerald-100 rounded border-l-4 border-emerald-500">
+                      <div className="p-3 bg-emerald-50/80 rounded-lg">
+                        <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide block mb-1">
+                          Principal Registration No.
+                        </span>
                         <span className="font-mono font-bold text-emerald-900">
                           {maskSensitiveData(data.registrationNumber)}
                         </span>
                       </div>
-                    </div>
 
-                    <div>
-                      <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide">
-                        Business License No.
-                      </span>
-                      <div className="mt-1 p-2 bg-emerald-100 rounded border-l-4 border-emerald-500">
+                      <div className="p-3 bg-emerald-50/80 rounded-lg">
+                        <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide block mb-1">
+                          Business License No.
+                        </span>
                         <span className="font-mono text-emerald-900">ቁጥር ተሰጥቶ ፍ.1</span>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="space-y-4">
-                    <div>
-                      <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide">
-                        Previous Issue Date
-                      </span>
-                      <div className="mt-1 p-2 bg-emerald-100 rounded border-l-4 border-emerald-500">
+                    <div className="space-y-3">
+                      <div className="p-3 bg-emerald-50/80 rounded-lg">
+                        <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide block mb-1">
+                          Previous Issue Date
+                        </span>
                         <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4 text-emerald-600" />
                           <span className="font-medium text-emerald-900">{data.previousIssueDate}</span>
                         </div>
                       </div>
-                    </div>
 
-                    <div>
-                      <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide">
-                        Current Issue Date
-                      </span>
-                      <div className="mt-1 p-2 bg-emerald-100 rounded border-l-4 border-emerald-500">
+                      <div className="p-3 bg-emerald-50/80 rounded-lg">
+                        <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide block mb-1">
+                          Current Issue Date
+                        </span>
                         <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4 text-emerald-600" />
                           <span className="font-medium text-emerald-900">{data.issueDate}</span>
                         </div>
                       </div>
-                    </div>
 
-                    <div>
-                      <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide">
-                        Issue Location
-                      </span>
-                      <div className="mt-1 p-2 bg-emerald-100 rounded border-l-4 border-emerald-500">
+                      <div className="p-3 bg-emerald-50/80 rounded-lg">
+                        <span className="font-semibold text-emerald-800 text-xs uppercase tracking-wide block mb-1">
+                          Issue Location
+                        </span>
                         <span className="font-medium text-emerald-900">{data.issueLocation}</span>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </div>
             </div>
           </div>
 
@@ -329,161 +327,188 @@ export default function Certificate({ data }: CertificateProps) {
           </div> */}
 
           {/* Main Content - Combined Information Card */}
-          <div className="p-8 bg-white/90 rounded-xl shadow-md mb-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Left Column - Amharic */}
-              <div className="space-y-6">
-                <h3 className="text-lg font-bold text-emerald-800 pb-3 border-b-2 border-emerald-200">የንግድ ፈቃድ መረጃ</h3>
-                <div className="space-y-4">
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <span className="font-semibold text-emerald-800 text-sm">1. የግለሰብ/ድርጅት ስም</span>
-                    <div className="mt-2 font-medium text-emerald-900">{maskSensitiveData(data.ownerNameAm)}</div>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <span className="font-semibold text-emerald-800 text-sm">2. ዜግነት</span>
-                    <div className="mt-2 font-medium text-emerald-900">{data.nationalityAm}</div>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <span className="font-semibold text-emerald-800 text-sm">3. የንግድ ስም</span>
-                    <div className="mt-2 font-medium text-emerald-900">{data.tradeNameAm}</div>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <span className="font-semibold text-emerald-800 text-sm">4. ሥራ አስኪያጅ ስም</span>
-                    <div className="mt-2 font-medium text-emerald-900">{data.generalManagerNameAm}</div>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <span className="font-semibold text-emerald-800 text-sm">5. የንግድ ድርጅት አድራሻ</span>
-                    <div className="mt-2 space-y-2 text-sm">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <span className="text-xs text-emerald-600">ክልል:</span>
-                          <div className="font-medium text-emerald-900">{data.regionAm}</div>
+          <div className="relative mb-8">
+            {/* Unified Background Image */}
+            <div
+              className="absolute inset-0 opacity-5 bg-cover bg-center rounded-xl"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%2310b981' fillOpacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              }}
+            />
+
+            <Card className="relative p-6 bg-white/90 backdrop-blur-sm border border-emerald-200/50 shadow-lg">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Left Column - Amharic */}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-bold text-emerald-800 pb-2 border-b border-emerald-300/50 mb-4">
+                    የንግድ ፈቃድ መረጃ
+                  </h3>
+
+                  <div className="space-y-3">
+                    <div className="p-3 bg-emerald-50/80 rounded-lg">
+                      <span className="font-semibold text-emerald-800 text-sm block mb-1">1. የግለሰብ/ድርጅት ስም</span>
+                      <div className="font-medium text-emerald-900">{maskSensitiveData(data.ownerNameAm)}</div>
+                    </div>
+
+                    <div className="p-3 bg-emerald-50/80 rounded-lg">
+                      <span className="font-semibold text-emerald-800 text-sm block mb-1">2. ዜግነት</span>
+                      <div className="font-medium text-emerald-900">{data.nationalityAm}</div>
+                    </div>
+
+                    <div className="p-3 bg-emerald-50/80 rounded-lg">
+                      <span className="font-semibold text-emerald-800 text-sm block mb-1">3. የንግድ ስም</span>
+                      <div className="font-medium text-emerald-900">{data.tradeNameAm}</div>
+                    </div>
+
+                    <div className="p-3 bg-emerald-50/80 rounded-lg">
+                      <span className="font-semibold text-emerald-800 text-sm block mb-1">4. ሥራ አስኪያጅ ስም</span>
+                      <div className="font-medium text-emerald-900">{data.generalManagerNameAm}</div>
+                    </div>
+
+                    <div className="p-3 bg-emerald-50/80 rounded-lg">
+                      <span className="font-semibold text-emerald-800 text-sm block mb-2">5. የንግድ ድርጅት አድራሻ</span>
+                      <div className="space-y-2 text-sm">
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <span className="text-xs text-emerald-600 block">ክልል:</span>
+                            <div className="font-medium text-emerald-900">{data.regionAm}</div>
+                          </div>
+                          <div>
+                            <span className="text-xs text-emerald-600 block">ዞን/ክ/ከተማ:</span>
+                            <div className="font-medium text-emerald-900">{data.zoneSubCityAm}</div>
+                          </div>
                         </div>
-                        <div>
-                          <span className="text-xs text-emerald-600">ዞን/ክ/ከተማ:</span>
-                          <div className="font-medium text-emerald-900">{data.zoneSubCityAm}</div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <span className="text-xs text-emerald-600 block">ወረዳ:</span>
+                            <div className="font-medium text-emerald-900">{data.woredaAm}</div>
+                          </div>
+                          <div>
+                            <span className="text-xs text-emerald-600 block">ቀበሌ:</span>
+                            <div className="font-medium text-emerald-900">{data.kebeleAm}</div>
+                          </div>
                         </div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <span className="text-xs text-emerald-600">ወረዳ:</span>
-                          <div className="font-medium text-emerald-900">{data.woredaAm}</div>
-                        </div>
-                        <div>
-                          <span className="text-xs text-emerald-600">ቀበሌ:</span>
-                          <div className="font-medium text-emerald-900">{data.kebeleAm}</div>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <span className="text-xs text-emerald-600">የቤት ቁጥር:</span>
-                          <div className="font-medium text-emerald-900">{data.houseNo}</div>
-                        </div>
-                        <div>
-                          <span className="text-xs text-emerald-600">ስልክ ቁጥር:</span>
-                          <div className="font-medium text-emerald-900">{maskSensitiveData(data.telNo)}</div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <span className="text-xs text-emerald-600 block">የቤት ቁጥር:</span>
+                            <div className="font-medium text-emerald-900">{data.houseNo}</div>
+                          </div>
+                          <div>
+                            <span className="text-xs text-emerald-600 block">ስልክ ቁጥር:</span>
+                            <div className="font-medium text-emerald-900">{maskSensitiveData(data.telNo)}</div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <span className="font-semibold text-emerald-800 text-sm">6. የንግድ ሥራ መስክ</span>
-                    <div className="mt-2">
-                      <Badge variant="secondary" className="bg-emerald-200 text-emerald-800 mr-2">
-                        {data.businessCode}
-                      </Badge>
-                      <span className="font-medium text-emerald-900">{data.fieldOfBusinessAm}</span>
+
+                    <div className="p-3 bg-emerald-50/80 rounded-lg">
+                      <span className="font-semibold text-emerald-800 text-sm block mb-1">6. የንግድ ሥራ መስክ</span>
+                      <div className="flex items-center gap-2">
+                        <Badge variant="secondary" className="bg-emerald-200/80 text-emerald-800 text-xs">
+                          {data.businessCode}
+                        </Badge>
+                        <span className="font-medium text-emerald-900 text-sm">{data.fieldOfBusinessAm}</span>
+                      </div>
+                    </div>
+
+                    <div className="p-3 bg-emerald-50/80 rounded-lg">
+                      <span className="font-semibold text-emerald-800 text-sm block mb-1">7. ካፒታል በኢት ብር</span>
+                      <div className="font-bold text-lg text-emerald-900">{data.capitalAmount} ETB</div>
                     </div>
                   </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <span className="font-semibold text-emerald-800 text-sm">7. ካፒታል በኢት ብር</span>
-                    <div className="mt-2 font-bold text-lg text-emerald-900">{data.capitalAmount} ETB</div>
+                </div>
+
+                {/* Right Column - English */}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-bold text-emerald-800 pb-2 border-b border-emerald-300/50 mb-4">
+                    Business License Information
+                  </h3>
+
+                  <div className="space-y-3">
+                    <div className="p-3 bg-teal-50/80 rounded-lg">
+                      <span className="font-semibold text-teal-800 text-sm block mb-1">1. Owner/Company Name</span>
+                      <div className="font-medium text-teal-900">{maskSensitiveData(data.ownerName)}</div>
+                    </div>
+
+                    <div className="p-3 bg-teal-50/80 rounded-lg">
+                      <span className="font-semibold text-teal-800 text-sm block mb-1">2. Nationality</span>
+                      <div className="font-medium text-teal-900">{data.nationality}</div>
+                    </div>
+
+                    <div className="p-3 bg-teal-50/80 rounded-lg">
+                      <span className="font-semibold text-teal-800 text-sm block mb-1">3. Trade Name</span>
+                      <div className="font-medium text-teal-900">{data.tradeName}</div>
+                    </div>
+
+                    <div className="p-3 bg-teal-50/80 rounded-lg">
+                      <span className="font-semibold text-teal-800 text-sm block mb-1">4. General Manager Name</span>
+                      <div className="font-medium text-teal-900">{data.generalManagerName}</div>
+                    </div>
+
+                    <div className="p-3 bg-teal-50/80 rounded-lg">
+                      <span className="font-semibold text-teal-800 text-sm block mb-2">5. Business Address</span>
+                      <div className="space-y-2 text-sm">
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <span className="text-xs text-teal-600 block">Region:</span>
+                            <div className="font-medium text-teal-900">{data.region}</div>
+                          </div>
+                          <div>
+                            <span className="text-xs text-teal-600 block">Zone/Sub City:</span>
+                            <div className="font-medium text-teal-900">{data.zoneSubCity}</div>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <span className="text-xs text-teal-600 block">Woreda:</span>
+                            <div className="font-medium text-teal-900">{data.woreda}</div>
+                          </div>
+                          <div>
+                            <span className="text-xs text-teal-600 block">Kebele:</span>
+                            <div className="font-medium text-teal-900">{data.kebele}</div>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <span className="text-xs text-teal-600 block">House No.:</span>
+                            <div className="font-medium text-teal-900">{data.houseNo}</div>
+                          </div>
+                          <div>
+                            <span className="text-xs text-teal-600 block">Tel.No:</span>
+                            <div className="font-medium text-teal-900">{maskSensitiveData(data.telNo)}</div>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <span className="text-xs text-teal-600 block">Fax:</span>
+                            <div className="font-medium text-teal-900">{data.fax || "N/A"}</div>
+                          </div>
+                          <div>
+                            <span className="text-xs text-teal-600 block">E-mail:</span>
+                            <div className="font-medium text-teal-900">{maskSensitiveData(data.email || "N/A")}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-3 bg-teal-50/80 rounded-lg">
+                      <span className="font-semibold text-teal-800 text-sm block mb-1">6. Field of Business</span>
+                      <div className="flex items-center gap-2">
+                        <Badge variant="secondary" className="bg-teal-200/80 text-teal-800 text-xs">
+                          {data.businessCode}
+                        </Badge>
+                        <span className="font-medium text-teal-900 text-sm">{data.fieldOfBusiness}</span>
+                      </div>
+                    </div>
+
+                    <div className="p-3 bg-teal-50/80 rounded-lg">
+                      <span className="font-semibold text-teal-800 text-sm block mb-1">7. Capital in ETB</span>
+                      <div className="font-bold text-lg text-teal-900">{data.capitalAmount} ETB</div>
+                    </div>
                   </div>
                 </div>
               </div>
-              {/* Right Column - English */}
-              <div className="space-y-6">
-                <h3 className="text-lg font-bold text-emerald-800 pb-3 border-b-2 border-emerald-200">
-                  Business License Information
-                </h3>
-                <div className="space-y-4">
-                  <div className="bg-teal-50 p-4 rounded-lg">
-                    <span className="font-semibold text-teal-800 text-sm">1. Owner/Company Name</span>
-                    <div className="mt-2 font-medium text-teal-900">{maskSensitiveData(data.ownerName)}</div>
-                  </div>
-                  <div className="bg-teal-50 p-4 rounded-lg">
-                    <span className="font-semibold text-teal-800 text-sm">2. Nationality</span>
-                    <div className="mt-2 font-medium text-teal-900">{data.nationality}</div>
-                  </div>
-                  <div className="bg-teal-50 p-4 rounded-lg">
-                    <span className="font-semibold text-teal-800 text-sm">3. Trade Name</span>
-                    <div className="mt-2 font-medium text-teal-900">{data.tradeName}</div>
-                  </div>
-                  <div className="bg-teal-50 p-4 rounded-lg">
-                    <span className="font-semibold text-teal-800 text-sm">4. General Manager Name</span>
-                    <div className="mt-2 font-medium text-teal-900">{data.generalManagerName}</div>
-                  </div>
-                  <div className="bg-teal-50 p-4 rounded-lg">
-                    <span className="font-semibold text-teal-800 text-sm">5. Business Address</span>
-                    <div className="mt-2 space-y-2 text-sm">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <span className="text-xs text-teal-600">Region:</span>
-                          <div className="font-medium text-teal-900">{data.region}</div>
-                        </div>
-                        <div>
-                          <span className="text-xs text-teal-600">Zone/Sub City:</span>
-                          <div className="font-medium text-teal-900">{data.zoneSubCity}</div>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <span className="text-xs text-teal-600">Woreda:</span>
-                          <div className="font-medium text-teal-900">{data.woreda}</div>
-                        </div>
-                        <div>
-                          <span className="text-xs text-teal-600">Kebele:</span>
-                          <div className="font-medium text-teal-900">{data.kebele}</div>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <span className="text-xs text-teal-600">House No.:</span>
-                          <div className="font-medium text-teal-900">{data.houseNo}</div>
-                        </div>
-                        <div>
-                          <span className="text-xs text-teal-600">Tel.No:</span>
-                          <div className="font-medium text-teal-900">{maskSensitiveData(data.telNo)}</div>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <span className="text-xs text-teal-600">Fax:</span>
-                          <div className="font-medium text-teal-900">{data.fax || "N/A"}</div>
-                        </div>
-                        <div>
-                          <span className="text-xs text-teal-600">E-mail:</span>
-                          <div className="font-medium text-teal-900">{maskSensitiveData(data.email || "N/A")}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-teal-50 p-4 rounded-lg">
-                    <span className="font-semibold text-teal-800 text-sm">6. Field of Business</span>
-                    <div className="mt-2">
-                      <Badge variant="secondary" className="bg-teal-200 text-teal-800 mr-2">
-                        {data.businessCode}
-                      </Badge>
-                      <span className="font-medium text-teal-900">{data.fieldOfBusiness}</span>
-                    </div>
-                  </div>
-                  <div className="bg-teal-50 p-4 rounded-lg">
-                    <span className="font-semibold text-teal-800 text-sm">7. Capital in ETB</span>
-                    <div className="mt-2 font-bold text-lg text-teal-900">{data.capitalAmount} ETB</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </Card>
           </div>
 
           {/* Official Signature Section */}

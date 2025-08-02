@@ -212,7 +212,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="ownerNameAm" className="flex items-center gap-2">
-                  የባለቤት/ድርጅት ስም <Badge variant="secondary">Amharic</Badge>
+                  የባለቤት/ድርጅት ስም 
                 </Label>
                 <Input
                   id="ownerNameAm"
@@ -225,7 +225,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="ownerName" className="flex items-center gap-2">
-                  Owner/Company Name <Badge variant="outline">English</Badge>
+                  Owner/Company Name 
                 </Label>
                 <Input
                   id="ownerName"
@@ -241,7 +241,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="nationalityAm" className="flex items-center gap-2">
-                  ዜግነት <Badge variant="secondary">Amharic</Badge>
+                  ዜግነት 
                 </Label>
                 <Input
                   id="nationalityAm"
@@ -254,7 +254,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="nationality" className="flex items-center gap-2">
-                  Nationality <Badge variant="outline">English</Badge>
+                  Nationality 
                 </Label>
                 <Input
                   id="nationality"
@@ -270,7 +270,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="tradeNameAm" className="flex items-center gap-2">
-                  የንግድ ስም <Badge variant="secondary">Amharic</Badge>
+                  የንግድ ስም 
                 </Label>
                 <Input
                   id="tradeNameAm"
@@ -283,7 +283,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="tradeName" className="flex items-center gap-2">
-                  Trade Name <Badge variant="outline">English</Badge>
+                  Trade Name 
                 </Label>
                 <Input
                   id="tradeName"
@@ -299,7 +299,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="generalManagerNameAm" className="flex items-center gap-2">
-                  ሥራ አስኪያጅ ስም <Badge variant="secondary">Amharic</Badge>
+                  ሥራ አስኪያጅ ስም 
                 </Label>
                 <Input
                   id="generalManagerNameAm"
@@ -312,7 +312,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="generalManagerName" className="flex items-center gap-2">
-                  General Manager Name <Badge variant="outline">English</Badge>
+                  General Manager Name 
                 </Label>
                 <Input
                   id="generalManagerName"
@@ -356,7 +356,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="regionAm" className="flex items-center gap-2">
-                  ክልል <Badge variant="secondary">Amharic</Badge>
+                  ክልል 
                 </Label>
                 <Input
                   id="regionAm"
@@ -369,7 +369,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="region" className="flex items-center gap-2">
-                  Region <Badge variant="outline">English</Badge>
+                  Region 
                 </Label>
                 <Input
                   id="region"
@@ -385,7 +385,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="zoneSubCityAm" className="flex items-center gap-2">
-                  ዞን/ክ/ከተማ <Badge variant="secondary">Amharic</Badge>
+                  ዞን/ክ/ከተማ 
                 </Label>
                 <Input
                   id="zoneSubCityAm"
@@ -398,7 +398,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="zoneSubCity" className="flex items-center gap-2">
-                  Zone/Sub City <Badge variant="outline">English</Badge>
+                  Zone/Sub City 
                 </Label>
                 <Input
                   id="zoneSubCity"
@@ -414,7 +414,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="woredaAm" className="flex items-center gap-2">
-                  ወረዳ <Badge variant="secondary">Amharic</Badge>
+                  ወረዳ 
                 </Label>
                 <Input
                   id="woredaAm"
@@ -427,7 +427,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="woreda" className="flex items-center gap-2">
-                  Woreda <Badge variant="outline">English</Badge>
+                  Woreda 
                 </Label>
                 <Input
                   id="woreda"
@@ -443,7 +443,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="kebeleAm" className="flex items-center gap-2">
-                  ቀበሌ <Badge variant="secondary">Amharic</Badge>
+                  ቀበሌ 
                 </Label>
                 <Input
                   id="kebeleAm"
@@ -456,7 +456,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="kebele" className="flex items-center gap-2">
-                  Kebele <Badge variant="outline">English</Badge>
+                  Kebele 
                 </Label>
                 <Input
                   id="kebele"
@@ -529,7 +529,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="fieldOfBusinessAm" className="flex items-center gap-2">
-                  የንግድ መግለጫ <Badge variant="secondary">Amharic</Badge>
+                  የንግድ መግለጫ 
                 </Label>
                 <Textarea
                   id="fieldOfBusinessAm"
@@ -543,7 +543,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="fieldOfBusiness" className="flex items-center gap-2">
-                  Field of Business <Badge variant="outline">English</Badge>
+                  Field of Business 
                 </Label>
                 <Textarea
                   id="fieldOfBusiness"
@@ -593,7 +593,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="issueLocationAm" className="flex items-center gap-2">
-                  ቦታ <Badge variant="secondary">Amharic</Badge>
+                  ቦታ 
                 </Label>
                 <Input
                   id="issueLocationAm"
@@ -608,7 +608,7 @@ export default function BusinessLicenseGenerator() {
 
             <div className="space-y-2">
               <Label htmlFor="issueLocation" className="flex items-center gap-2">
-                Issue Location <Badge variant="outline">English</Badge>
+                Issue Location 
               </Label>
               <Input
                 id="issueLocation"
@@ -659,7 +659,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="officialNameAm" className="flex items-center gap-2">
-                  የባለስልጣኑ ስም <Badge variant="secondary">Amharic</Badge>
+                  የባለስልጣኑ ስም 
                 </Label>
                 <Input
                   id="officialNameAm"
@@ -672,7 +672,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="officialName" className="flex items-center gap-2">
-                  Name of Official <Badge variant="outline">English</Badge>
+                  Name of Official 
                 </Label>
                 <Input
                   id="officialName"
