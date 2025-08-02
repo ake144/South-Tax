@@ -26,6 +26,7 @@ import {
   Phone,
   Mail,
   Hash,
+  Check,
 } from "lucide-react"
 import TaxpayerCertificate from "./certeficate"
 
@@ -693,75 +694,98 @@ export default function TaxpayerRegistrationGenerator() {
           </TabsList>
 
           <TabsContent value="form">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
               {/* Step Navigation */}
-              <div className="lg:col-span-1">
-                <Card className="sticky top-4 shadow-lg">
-                  <CardHeader className="pb-4">
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <Receipt className="w-5 h-5 text-green-600" />
-                      Progress
-                    </CardTitle>
-                    <Progress value={progressPercentage} className="w-full h-3" />
-                    <p className="text-sm text-gray-600 font-medium">
-                      {completedSteps.length} of 4 steps completed
-                    </p>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    {steps.map((step) => {
-                      const Icon = step.icon
-                      const isCompleted = completedSteps.includes(step.id)
-                      const isCurrent = currentStep === step.id
-
-                      return (
-                        <div
-                          key={step.id}
-                          className={`flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all duration-200 ${
-                            isCurrent
-                              ? `${step.bgColor} border-2 ${step.borderColor} shadow-md`
-                              : isCompleted
-                                ? "bg-green-50 border-2 border-green-200 hover:bg-green-100"
-                                : "bg-gray-50 border-2 border-gray-200 hover:bg-gray-100"
-                          }`}
-                          onClick={() => setCurrentStep(step.id)}
-                        >
-                          <div
-                            className={`p-3 rounded-full transition-all ${
-                              isCurrent
-                                ? `${step.color.replace('text-', 'bg-').replace('-600', '-600')} text-white`
-                                : isCompleted
-                                  ? "bg-green-600 text-white"
-                                  : "bg-gray-300 text-gray-600"
-                            }`}
-                          >
-                            {isCompleted ? <CheckCircle className="w-5 h-5" /> : <Icon className="w-5 h-5" />}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p
-                              className={`font-semibold text-sm ${
-                                isCurrent
-                                  ? step.color.replace('-600', '-900')
-                                  : isCompleted
-                                    ? "text-green-900"
-                                    : "text-gray-700"
-                              }`}
-                            >
-                              {step.title}
-                            </p>
-                            <p className="text-xs text-gray-500 truncate">{step.titleAm}</p>
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </CardContent>
-                </Card>
+            <div className="mb-8">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-bold text-gray-900">Business License Application Form</h2>
+                <Badge variant="secondary" className="text-sm">
+                  Step {currentStep} of 4
+                </Badge>
               </div>
 
-              {/* Form Content */}
-              <div className="lg:col-span-3">
+              {/* Step Indicators */}
+              <div className="flex items-center justify-between max-w-4xl mx-auto mb-6">
+                {steps.map((stepObj, index) => {
+                  const isCompleted = completedSteps.includes(stepObj.id)
+                  const isCurrent = stepObj.id === currentStep
+                  const status = isCompleted ? "completed" : isCurrent ? "current" : "upcoming"
+                  const isLast = index === steps.length - 1
+
+                  return (
+                    <div key={stepObj.id} className="flex items-center flex-1">
+                      {/* Step Circle */}
+                      <div className="flex flex-col items-center">
+                        <div
+                          className={`
+                  relative flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 ease-in-out
+                  ${
+                    status === "completed"
+                      ? "bg-green-500 border-green-500 text-white shadow-lg"
+                      : status === "current"
+                        ? "bg-blue-500 border-blue-500 text-white shadow-lg scale-110"
+                        : "bg-white border-gray-300 text-gray-400"
+                  }
+                `}
+                        >
+                          {status === "completed" ? (
+                            <Check className="w-6 h-6" />
+                          ) : (
+                            <span className="text-sm font-semibold">{stepObj.id}</span>
+                          )}
+                          {/* Pulse animation for current step */}
+                          {status === "current" && (
+                            <div className="absolute inset-0 rounded-full bg-blue-500 animate-ping opacity-25"></div>
+                          )}
+                        </div>
+
+                        {/* Step Label */}
+                        <div className="mt-3 text-center">
+                          <div
+                            className={`text-sm font-medium transition-colors duration-200 ${
+                              status === "current"
+                                ? "text-blue-600"
+                                : status === "completed"
+                                  ? "text-green-600"
+                                  : "text-gray-500"
+                            }`}
+                          >
+                            {stepObj.title}
+                          </div>
+                          <div className="text-xs text-gray-400 mt-1">{stepObj.description}</div>
+                        </div>
+                      </div>
+
+                      {/* Connecting Line */}
+                      {!isLast && (
+                        <div className="flex-1 h-0.5 mx-4 mt-[-20px]">
+                          <div
+                            className={`h-full transition-all duration-500 ease-in-out ${completedSteps.includes(stepObj.id) ? "bg-green-500" : "bg-gray-300"}`}
+                          ></div>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* Progress Bar */}
+              <div className="max-w-4xl mx-auto">
+                <div className="flex justify-between text-sm text-gray-500 mb-2">
+                  <span>Progress</span>
+                  <span>{Math.round((completedSteps.length / steps.length) * 100)}% Complete</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-700 ease-out"
+                    style={{ width: `${(completedSteps.length / steps.length) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+
                 <Card className="min-h-[700px] shadow-lg">
                   <CardHeader className="pb-6">
-                    <div className="flex items-center justify-between">
+                    {/* <div className="flex items-center justify-between">
                       <div>
                         <CardTitle className="text-2xl flex items-center gap-3">
                           Step {currentStep} of 4: {currentStepData?.title}
@@ -776,7 +800,7 @@ export default function TaxpayerRegistrationGenerator() {
                       >
                         {validateStep(currentStep) ? "Complete" : "In Progress"}
                       </Badge>
-                    </div>
+                    </div> */}
                   </CardHeader>
                   <CardContent className="pb-8">
                     {renderStepContent()}
@@ -825,8 +849,7 @@ export default function TaxpayerRegistrationGenerator() {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
-            </div>
+         
           </TabsContent>
 
           <TabsContent value="certificate">

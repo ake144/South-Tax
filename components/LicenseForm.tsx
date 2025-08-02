@@ -8,7 +8,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
@@ -23,8 +22,10 @@ import {
   ChevronLeft,
   Upload,
   CheckCircle,
+  Check,
 } from "lucide-react"
 import Certificate from "./certeficate"
+
 
 interface BusinessData {
   ownerName: string
@@ -211,7 +212,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="ownerNameAm" className="flex items-center gap-2">
-                  የባለቤት/ድርጅት ስም 
+                  የባለቤት/ድርጅት ስም <Badge variant="secondary">Amharic</Badge>
                 </Label>
                 <Input
                   id="ownerNameAm"
@@ -224,7 +225,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="ownerName" className="flex items-center gap-2">
-                  Owner/Company Name 
+                  Owner/Company Name <Badge variant="outline">English</Badge>
                 </Label>
                 <Input
                   id="ownerName"
@@ -240,7 +241,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="nationalityAm" className="flex items-center gap-2">
-                  ዜግነት 
+                  ዜግነት <Badge variant="secondary">Amharic</Badge>
                 </Label>
                 <Input
                   id="nationalityAm"
@@ -253,7 +254,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="nationality" className="flex items-center gap-2">
-                  Nationality 
+                  Nationality <Badge variant="outline">English</Badge>
                 </Label>
                 <Input
                   id="nationality"
@@ -269,7 +270,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="tradeNameAm" className="flex items-center gap-2">
-                  የንግድ ስም 
+                  የንግድ ስም <Badge variant="secondary">Amharic</Badge>
                 </Label>
                 <Input
                   id="tradeNameAm"
@@ -282,7 +283,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="tradeName" className="flex items-center gap-2">
-                  Trade Name 
+                  Trade Name <Badge variant="outline">English</Badge>
                 </Label>
                 <Input
                   id="tradeName"
@@ -298,7 +299,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="generalManagerNameAm" className="flex items-center gap-2">
-                  ሥራ አስኪያጅ ስም 
+                  ሥራ አስኪያጅ ስም <Badge variant="secondary">Amharic</Badge>
                 </Label>
                 <Input
                   id="generalManagerNameAm"
@@ -311,7 +312,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="generalManagerName" className="flex items-center gap-2">
-                  General Manager Name 
+                  General Manager Name <Badge variant="outline">English</Badge>
                 </Label>
                 <Input
                   id="generalManagerName"
@@ -355,7 +356,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="regionAm" className="flex items-center gap-2">
-                  ክልል 
+                  ክልል <Badge variant="secondary">Amharic</Badge>
                 </Label>
                 <Input
                   id="regionAm"
@@ -368,7 +369,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="region" className="flex items-center gap-2">
-                  Region 
+                  Region <Badge variant="outline">English</Badge>
                 </Label>
                 <Input
                   id="region"
@@ -384,7 +385,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="zoneSubCityAm" className="flex items-center gap-2">
-                  ዞን/ክ/ከተማ 
+                  ዞን/ክ/ከተማ <Badge variant="secondary">Amharic</Badge>
                 </Label>
                 <Input
                   id="zoneSubCityAm"
@@ -397,7 +398,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="zoneSubCity" className="flex items-center gap-2">
-                  Zone/Sub City 
+                  Zone/Sub City <Badge variant="outline">English</Badge>
                 </Label>
                 <Input
                   id="zoneSubCity"
@@ -413,7 +414,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="woredaAm" className="flex items-center gap-2">
-                  ወረዳ 
+                  ወረዳ <Badge variant="secondary">Amharic</Badge>
                 </Label>
                 <Input
                   id="woredaAm"
@@ -426,7 +427,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="woreda" className="flex items-center gap-2">
-                  Woreda 
+                  Woreda <Badge variant="outline">English</Badge>
                 </Label>
                 <Input
                   id="woreda"
@@ -442,7 +443,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="kebeleAm" className="flex items-center gap-2">
-                  ቀበሌ 
+                  ቀበሌ <Badge variant="secondary">Amharic</Badge>
                 </Label>
                 <Input
                   id="kebeleAm"
@@ -455,7 +456,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="kebele" className="flex items-center gap-2">
-                  Kebele 
+                  Kebele <Badge variant="outline">English</Badge>
                 </Label>
                 <Input
                   id="kebele"
@@ -528,7 +529,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="fieldOfBusinessAm" className="flex items-center gap-2">
-                  የንግድ መግለጫ 
+                  የንግድ መግለጫ <Badge variant="secondary">Amharic</Badge>
                 </Label>
                 <Textarea
                   id="fieldOfBusinessAm"
@@ -542,7 +543,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="fieldOfBusiness" className="flex items-center gap-2">
-                  Field of Business 
+                  Field of Business <Badge variant="outline">English</Badge>
                 </Label>
                 <Textarea
                   id="fieldOfBusiness"
@@ -592,7 +593,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="issueLocationAm" className="flex items-center gap-2">
-                  ቦታ 
+                  ቦታ <Badge variant="secondary">Amharic</Badge>
                 </Label>
                 <Input
                   id="issueLocationAm"
@@ -607,7 +608,7 @@ export default function BusinessLicenseGenerator() {
 
             <div className="space-y-2">
               <Label htmlFor="issueLocation" className="flex items-center gap-2">
-                Issue Location 
+                Issue Location <Badge variant="outline">English</Badge>
               </Label>
               <Input
                 id="issueLocation"
@@ -658,7 +659,7 @@ export default function BusinessLicenseGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="officialNameAm" className="flex items-center gap-2">
-                  የባለስልጣኑ ስም 
+                  የባለስልጣኑ ስም <Badge variant="secondary">Amharic</Badge>
                 </Label>
                 <Input
                   id="officialNameAm"
@@ -671,7 +672,7 @@ export default function BusinessLicenseGenerator() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="officialName" className="flex items-center gap-2">
-                  Name of Official 
+                  Name of Official <Badge variant="outline">English</Badge>
                 </Label>
                 <Input
                   id="officialName"
@@ -734,128 +735,157 @@ export default function BusinessLicenseGenerator() {
           </TabsList>
 
           <TabsContent value="form">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-              {/* Step Navigation */}
-              <div className="lg:col-span-1">
-                <Card className="sticky top-4">
-                  <CardHeader>
-                    <CardTitle className="text-lg">Progress</CardTitle>
-                    <Progress value={progressPercentage} className="w-full" />
-                    <p className="text-sm text-gray-600">{completedSteps.length} of 4 steps completed</p>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
-                    {steps.map((step) => {
-                      const Icon = step.icon
-                      const isCompleted = completedSteps.includes(step.id)
-                      const isCurrent = currentStep === step.id
+            {/* Top Progress Bar */}
+            <div className="mb-8">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-bold text-gray-900">Business License Application Form</h2>
+                <Badge variant="secondary" className="text-sm">
+                  Step {currentStep} of 4
+                </Badge>
+              </div>
 
-                      return (
+              {/* Step Indicators */}
+              <div className="flex items-center justify-between max-w-4xl mx-auto mb-6">
+                {steps.map((stepObj, index) => {
+                  const isCompleted = completedSteps.includes(stepObj.id)
+                  const isCurrent = stepObj.id === currentStep
+                  const status = isCompleted ? "completed" : isCurrent ? "current" : "upcoming"
+                  const isLast = index === steps.length - 1
+
+                  return (
+                    <div key={stepObj.id} className="flex items-center flex-1">
+                      {/* Step Circle */}
+                      <div className="flex flex-col items-center">
                         <div
-                          key={step.id}
-                          className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${
-                            isCurrent
-                              ? "bg-blue-100 border-2 border-blue-300"
-                              : isCompleted
-                                ? "bg-green-50 border border-green-200"
-                                : "bg-gray-50 border border-gray-200 hover:bg-gray-100"
-                          }`}
-                          onClick={() => setCurrentStep(step.id)}
+                          className={`
+                  relative flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 ease-in-out
+                  ${
+                    status === "completed"
+                      ? "bg-green-500 border-green-500 text-white shadow-lg"
+                      : status === "current"
+                        ? "bg-blue-500 border-blue-500 text-white shadow-lg scale-110"
+                        : "bg-white border-gray-300 text-gray-400"
+                  }
+                `}
                         >
+                          {status === "completed" ? (
+                            <Check className="w-6 h-6" />
+                          ) : (
+                            <span className="text-sm font-semibold">{stepObj.id}</span>
+                          )}
+                          {/* Pulse animation for current step */}
+                          {status === "current" && (
+                            <div className="absolute inset-0 rounded-full bg-blue-500 animate-ping opacity-25"></div>
+                          )}
+                        </div>
+
+                        {/* Step Label */}
+                        <div className="mt-3 text-center">
                           <div
-                            className={`p-2 rounded-full ${
-                              isCurrent
-                                ? "bg-blue-600 text-white"
-                                : isCompleted
-                                  ? "bg-green-600 text-white"
-                                  : "bg-gray-300 text-gray-600"
+                            className={`text-sm font-medium transition-colors duration-200 ${
+                              status === "current"
+                                ? "text-blue-600"
+                                : status === "completed"
+                                  ? "text-green-600"
+                                  : "text-gray-500"
                             }`}
                           >
-                            {isCompleted ? <CheckCircle className="w-4 h-4" /> : <Icon className="w-4 h-4" />}
+                            {stepObj.title}
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <p
-                              className={`font-medium text-sm ${
-                                isCurrent ? "text-blue-900" : isCompleted ? "text-green-900" : "text-gray-700"
-                              }`}
-                            >
-                              {step.title}
-                            </p>
-                            <p className="text-xs text-gray-500 truncate">{step.titleAm}</p>
-                          </div>
+                          <div className="text-xs text-gray-400 mt-1">{stepObj.description}</div>
                         </div>
-                      )
-                    })}
-                  </CardContent>
-                </Card>
+                      </div>
+
+                      {/* Connecting Line */}
+                      {!isLast && (
+                        <div className="flex-1 h-0.5 mx-4 mt-[-20px]">
+                          <div
+                            className={`h-full transition-all duration-500 ease-in-out ${completedSteps.includes(stepObj.id) ? "bg-green-500" : "bg-gray-300"}`}
+                          ></div>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
 
-              {/* Form Content */}
-              <div className="lg:col-span-3">
-                <Card className="min-h-[600px]">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <CardTitle className="text-2xl">
-                          Step {currentStep} of 4: {steps[currentStep - 1]?.title}
-                        </CardTitle>
-                        <CardDescription className="text-base mt-1">
-                          {steps[currentStep - 1]?.description}
-                        </CardDescription>
-                      </div>
-                      <Badge variant={validateStep(currentStep) ? "default" : "secondary"} className="text-sm">
-                        {validateStep(currentStep) ? "Complete" : "In Progress"}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    {renderStepContent()}
-
-                    {/* Navigation Buttons */}
-                    <div className="flex justify-between items-center mt-8 pt-6 border-t">
-                      <Button
-                        variant="outline"
-                        onClick={handlePrevStep}
-                        disabled={currentStep === 1}
-                        className="flex items-center gap-2 bg-transparent"
-                      >
-                        <ChevronLeft className="w-4 h-4" />
-                        Previous
-                      </Button>
-
-                      <div className="flex gap-4">
-                        <Button
-                          variant="outline"
-                          onClick={() => setFormData(dummyData)}
-                          className="flex items-center gap-2"
-                        >
-                          Load Sample Data
-                        </Button>
-
-                        {currentStep < 4 ? (
-                          <Button
-                            onClick={handleNextStep}
-                            disabled={!validateStep(currentStep)}
-                            className="flex items-center gap-2"
-                          >
-                            Next
-                            <ChevronRight className="w-4 h-4" />
-                          </Button>
-                        ) : (
-                          <Button
-                            onClick={handleGenerateCertificate}
-                            disabled={!validateStep(currentStep)}
-                            className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
-                          >
-                            <Eye className="w-4 h-4" />
-                            Generate Certificate
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              {/* Progress Bar */}
+              <div className="max-w-4xl mx-auto">
+                <div className="flex justify-between text-sm text-gray-500 mb-2">
+                  <span>Progress</span>
+                  <span>{Math.round((completedSteps.length / steps.length) * 100)}% Complete</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-700 ease-out"
+                    style={{ width: `${(completedSteps.length / steps.length) * 100}%` }}
+                  ></div>
+                </div>
               </div>
             </div>
+
+            {/* Form Card */}
+            <Card className="min-h-[600px] max-w-4xl mx-auto">
+              <CardHeader>
+                {/* <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle className="text-2xl">
+                      Step {currentStep} of 4: {steps[currentStep - 1]?.title}
+                    </CardTitle>
+                    <CardDescription className="text-base mt-1">{steps[currentStep - 1]?.description}</CardDescription>
+                  </div>
+                  <Badge variant={validateStep(currentStep) ? "default" : "secondary"} className="text-sm">
+                    {validateStep(currentStep) ? "Complete" : "In Progress"}
+                  </Badge>
+                </div> */}
+              </CardHeader>
+              <CardContent>
+                {renderStepContent()}
+
+                {/* Navigation Buttons */}
+                <div className="flex justify-between items-center mt-8 pt-6 border-t">
+                  <Button
+                    variant="outline"
+                    onClick={handlePrevStep}
+                    disabled={currentStep === 1}
+                    className="flex items-center gap-2 bg-transparent"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    Previous
+                  </Button>
+
+                  <div className="flex gap-4">
+                    <Button
+                      variant="outline"
+                      onClick={() => setFormData(dummyData)}
+                      className="flex items-center gap-2"
+                    >
+                      Load Sample Data
+                    </Button>
+
+                    {currentStep < 4 ? (
+                      <Button
+                        onClick={handleNextStep}
+                        disabled={!validateStep(currentStep)}
+                        className="flex items-center gap-2"
+                      >
+                        Next
+                        <ChevronRight className="w-4 h-4" />
+                      </Button>
+                    ) : (
+                      <Button
+                        onClick={handleGenerateCertificate}
+                        disabled={!validateStep(currentStep)}
+                        className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
+                      >
+                        <Eye className="w-4 h-4" />
+                        Generate Certificate
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           <TabsContent value="certificate">

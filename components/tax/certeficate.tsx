@@ -4,20 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import {
-  Download,
-  Share2,
-  Eye,
-  EyeOff,
-  Shield,
-  Calendar,
-  MapPin,
-  Building,
-  User,
-  Hash,
-  FileText,
-  Verified,
-} from "lucide-react"
+import { Download, Share2, Eye, EyeOff, Calendar, Hash, Verified } from "lucide-react"
 import Image from "next/image"
 
 interface TaxpayerData {
@@ -62,7 +49,6 @@ export default function TaxpayerCertificate({ data }: TaxpayerCertificateProps) 
     setIsDownloading(true)
 
     if (format === "json") {
-      // Download as JSON
       const dataStr = JSON.stringify(data, null, 2)
       const dataBlob = new Blob([dataStr], { type: "application/json" })
       const url = URL.createObjectURL(dataBlob)
@@ -72,11 +58,8 @@ export default function TaxpayerCertificate({ data }: TaxpayerCertificateProps) 
       link.click()
       URL.revokeObjectURL(url)
     } else if (format === "pdf") {
-      // Trigger print for PDF
       window.print()
     } else if (format === "png") {
-      // For PNG, we would need html2canvas library
-      // For now, just trigger print
       window.print()
     }
 
@@ -102,18 +85,29 @@ export default function TaxpayerCertificate({ data }: TaxpayerCertificateProps) 
     return value.slice(0, showLength) + "*".repeat(Math.max(0, value.length - showLength))
   }
 
+  // Generate QR code data
+  const qrData = JSON.stringify({
+    id: data.taxpayerIdNumber,
+    name: data.fullName,
+    certificate: data.certificateNumber,
+    issued: data.dateOfIssuance,
+    authority: "AMHARA REVENUE AUTHORITY",
+  })
+
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(qrData)}`
+
   return (
-    <div className="max-w-5xl mx-auto space-y-6">
-      {/* Action Bar */}
-      <Card className="p-4 bg-gradient-to-r from-blue-50 to-green-50 border-2 border-blue-200">
+    <div className="max-w-4xl mx-auto space-y-6">
+      {/* Action Bar
+      <Card className="p-4 bg-slate-50 border border-slate-200">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center">
               <Verified className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900">Official Certificate</h3>
-              <p className="text-sm text-gray-600">Generated on {new Date().toLocaleDateString()}</p>
+              <h3 className="font-semibold text-slate-900">Official Certificate</h3>
+              <p className="text-sm text-slate-600">Generated on {new Date().toLocaleDateString()}</p>
             </div>
           </div>
 
@@ -122,7 +116,7 @@ export default function TaxpayerCertificate({ data }: TaxpayerCertificateProps) 
               variant="outline"
               size="sm"
               onClick={() => setShowSensitiveData(!showSensitiveData)}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 border-slate-300"
             >
               {showSensitiveData ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               {showSensitiveData ? "Hide" : "Show"} Details
@@ -132,7 +126,7 @@ export default function TaxpayerCertificate({ data }: TaxpayerCertificateProps) 
               variant="outline"
               size="sm"
               onClick={handleShare}
-              className="flex items-center gap-2 bg-transparent"
+              className="flex items-center gap-2 border-slate-300 bg-transparent"
             >
               <Share2 className="w-4 h-4" />
               Share
@@ -143,7 +137,7 @@ export default function TaxpayerCertificate({ data }: TaxpayerCertificateProps) 
                 size="sm"
                 onClick={() => handleDownload("pdf")}
                 disabled={isDownloading}
-                className="flex items-center gap-2 bg-red-600 hover:bg-red-700"
+                className="flex items-center gap-2 bg-slate-700 hover:bg-slate-800"
               >
                 <Download className="w-4 h-4" />
                 PDF
@@ -152,20 +146,9 @@ export default function TaxpayerCertificate({ data }: TaxpayerCertificateProps) 
               <Button
                 size="sm"
                 variant="outline"
-                onClick={() => handleDownload("png")}
-                disabled={isDownloading}
-                className="flex items-center gap-2"
-              >
-                <Download className="w-4 h-4" />
-                PNG
-              </Button>
-
-              <Button
-                size="sm"
-                variant="outline"
                 onClick={() => handleDownload("json")}
                 disabled={isDownloading}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 border-slate-300"
               >
                 <Download className="w-4 h-4" />
                 JSON
@@ -173,183 +156,205 @@ export default function TaxpayerCertificate({ data }: TaxpayerCertificateProps) 
             </div>
           </div>
         </div>
-      </Card>
+      </Card> */}
 
       {/* Certificate */}
-      <Card className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-green-50/30 border-2 border-blue-200 shadow-2xl print:shadow-none print:border-gray-300">
-        {/* Watermark */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
+      <Card className="relative overflow-hidden bg-white border-2 border-slate-300 shadow-xl print:shadow-none print:border-slate-400">
+        {/* Subtle Watermark */}
+        <div className="absolute inset-0 opacity-3 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
-            <div className="text-6xl font-bold text-gray-400">OFFICIAL</div>
+            <div className="text-6xl font-bold text-slate-200">OFFICIAL</div>
           </div>
-        </div>
-
-        {/* Security Pattern */}
-        <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
-          <div className="w-full h-full bg-gradient-to-br from-blue-400 to-green-400 rounded-full blur-xl"></div>
-        </div>
-        <div className="absolute bottom-0 left-0 w-24 h-24 opacity-10">
-          <div className="w-full h-full bg-gradient-to-tr from-purple-400 to-pink-400 rounded-full blur-xl"></div>
         </div>
 
         <div className="relative p-8 print:p-6">
           {/* Header */}
-          <div className="text-center justify-center gap-9 flex flex-row mb-8 relative">
-            
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-8 mb-6">
               <div className="w-20 h-16 border-2 shadow-md rounded-sm overflow-hidden">
-                 <Image
-                  src='/flag.png'
+                <Image
+                  src="/flag.png"
                   alt="Ethiopian Flag"
                   width={120}
                   height={120}
                   className="w-full h-full object-cover"
-                  />
+                />
               </div>
 
-            <div className="space-y-2">
-              <p className="text-sm font-semibold text-gray-700">የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ</p>
-              <p className="text-sm font-semibold text-gray-700">የአማራ ብሔራዊ ክልላዊ መንግስት ገቢዎች ባለስልጣን</p>
-              <p className="text-sm font-medium text-gray-600 mt-3">Federal Democratic Republic of Ethiopia</p>
-              <p className="text-sm font-medium text-gray-600">AMHARA NATIONAL REGIONAL STATE REVENUE AUTHORITY</p>
-
-              <div className="mt-6 space-y-2">
-                <h1 className="text-xl font-bold text-gray-900">የግብር ከፋይ ምዝገባ ሰርተፊኬት</h1>
-                <h1 className="text-xl font-bold text-gray-900">TAXPAYER REGISTRATION CERTIFICATE</h1>
+              <div className="text-center">
+                <p className="text-sm font-semibold text-slate-700 mb-1">የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ</p>
+                <p className="text-sm font-semibold text-slate-700 mb-3">የአማራ ብሔራዊ ክልላዊ መንግስት ገቢዎች ባለስልጣን</p>
+                <p className="text-sm font-medium text-slate-600 mb-1">Federal Democratic Republic of Ethiopia</p>
+                <p className="text-sm font-medium text-slate-600 mb-4">
+                  AMHARA NATIONAL REGIONAL STATE REVENUE AUTHORITY
+                </p>
               </div>
 
-              <div className="mt-4 p-3 bg-gradient-to-r from-blue-100 to-green-100 rounded-lg border border-blue-200">
-                <p className="text-2xl font-bold text-blue-900">{maskSensitiveData(data.taxpayerIdNumber)}</p>
+              {/* QR Code */}
+              <div className="flex flex-col items-center">
+                <Image
+                  src={"/qr.png"}
+                  alt="Certificate QR Code"
+                  width={80}
+                  height={80}
+                  className="border border-slate-300 rounded"
+                />
+                <p className="text-xs text-slate-500 mt-1">Scan to verify</p>
               </div>
             </div>
 
-          </div>
+            <div className="space-y-3">
+              <h1 className="text-xl font-bold text-slate-900">የግብር ከፋይ ምዝገባ ሰርተፊኬት</h1>
+              <h1 className="text-xl font-bold text-slate-900">TAXPAYER REGISTRATION CERTIFICATE</h1>
 
-          {/* Main Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-            {/* Personal Information */}
-            <Card className="p-6 bg-white/80 backdrop-blur-sm border border-blue-200">
-              <div className="flex items-center gap-2 mb-4">
-                <User className="w-5 h-5 text-blue-600" />
-                <h3 className="font-semibold text-gray-900">Personal Information</h3>
+              <div className="mt-4 p-3 bg-slate-100 rounded-lg border border-slate-300">
+                <p className="text-2xl font-bold text-slate-900 font-mono">
+                  {maskSensitiveData(data.taxpayerIdNumber)}
+                </p>
               </div>
-              <div className="space-y-3">
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">Name / ስም</p>
-                  <p className="font-medium text-gray-900">{maskSensitiveData(data.fullName)}</p>
-                  <p className="text-sm text-gray-600">{maskSensitiveData(data.fullNameAm)}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">Taxpayer ID</p>
-                  <Badge variant="outline" className="font-mono">
-                    {maskSensitiveData(data.taxpayerIdNumber)}
-                  </Badge>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">Contact</p>
-                  <p className="text-sm text-gray-700">{maskSensitiveData(data.phoneNumber)}</p>
-                  <p className="text-sm text-gray-700">{maskSensitiveData(data.email)}</p>
-                </div>
-              </div>
-            </Card>
-
-            {/* Address Information */}
-            <Card className="p-6 bg-white/80 backdrop-blur-sm border border-green-200">
-              <div className="flex items-center gap-2 mb-4">
-                <MapPin className="w-5 h-5 text-green-600" />
-                <h3 className="font-semibold text-gray-900">Address Information</h3>
-              </div>
-              <div className="space-y-3">
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">Region / ክልል</p>
-                  <p className="font-medium text-gray-900">{data.region}</p>
-                  <p className="text-sm text-gray-600">{data.regionAm}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">Zone/Sub City</p>
-                  <p className="text-sm text-gray-700">{data.zoneSubCity}</p>
-                  <p className="text-sm text-gray-600">{data.zoneSubCityAm}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">Woreda / Kebele</p>
-                  <p className="text-sm text-gray-700">
-                    {data.woreda} / {data.kebele}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {data.woredaAm} / {data.kebeleAm}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">House No.</p>
-                  <p className="text-sm text-gray-700">{data.houseNo}</p>
-                </div>
-              </div>
-            </Card>
-
-            {/* Business Information */}
-            <Card className="p-6 bg-white/80 backdrop-blur-sm border border-purple-200">
-              <div className="flex items-center gap-2 mb-4">
-                <Building className="w-5 h-5 text-purple-600" />
-                <h3 className="font-semibold text-gray-900">Business Information</h3>
-              </div>
-              <div className="space-y-3">
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">Business Type</p>
-                  <p className="font-medium text-gray-900">{data.businessType}</p>
-                  <p className="text-sm text-gray-600">{data.businessTypeAm}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">ESIC Code</p>
-                  <Badge variant="secondary" className="font-mono">
-                    {data.esicSubGroup}
-                  </Badge>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wide">Description</p>
-                  <p className="text-sm text-gray-700">{data.businessDescription}</p>
-                  <p className="text-sm text-gray-600">{data.businessDescriptionAm}</p>
-                </div>
-              </div>
-            </Card>
-          </div>
-
-          {/* Certificate Details */}
-          <Card className="p-6 bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 mb-6">
-            <div className="flex items-center gap-2 mb-4">
-              <FileText className="w-5 h-5 text-orange-600" />
-              <h3 className="font-semibold text-gray-900">Certificate Details</h3>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide">Issuing Authority</p>
-                <p className="font-medium text-gray-900 text-sm">{data.issuingAuthority}</p>
-                <p className="text-sm text-gray-600">{data.issuingAuthorityAm}</p>
-              </div>
-              <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide">Issue Date</p>
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-gray-500" />
-                  <p className="font-medium text-gray-900">{data.dateOfIssuance}</p>
+          </div>
+
+          {/* Main Information Card */}
+          <Card className="p-8 bg-slate-50/50 border border-slate-200 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Left Column */}
+              <div className="space-y-6">
+                {/* Personal Information */}
+                <div>
+                  <h3 className="text-base font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-300">
+                    የግብር ከፋይ መረጃ / Taxpayer Information
+                  </h3>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">ስም / Name</p>
+                      <p className="font-medium text-slate-900">{maskSensitiveData(data.fullName)}</p>
+                      <p className="text-sm text-slate-600">{maskSensitiveData(data.fullNameAm)}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
+                        የግብር ከፋይ መለያ ቁጥር / Taxpayer ID
+                      </p>
+                      <Badge variant="outline" className="font-mono border-slate-300">
+                        {maskSensitiveData(data.taxpayerIdNumber)}
+                      </Badge>
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">ስልክ እና ኢሜይል / Contact</p>
+                      <p className="text-sm text-slate-700">{maskSensitiveData(data.phoneNumber)}</p>
+                      <p className="text-sm text-slate-700">{maskSensitiveData(data.email)}</p>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-sm text-gray-600">{data.dateOfIssuanceAm}</p>
+
+                {/* Address Information */}
+                <div>
+                  <h3 className="text-base font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-300">
+                    አድራሻ / Address
+                  </h3>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">ክልል / Region</p>
+                      <p className="font-medium text-slate-900">{data.region}</p>
+                      <p className="text-sm text-slate-600">{data.regionAm}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">ዞን እና ወረዳ / Zone & Woreda</p>
+                      <p className="text-sm text-slate-700">
+                        {data.zoneSubCity} / {data.woreda}
+                      </p>
+                      <p className="text-sm text-slate-600">
+                        {data.zoneSubCityAm} / {data.woredaAm}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
+                        ቀበሌ እና የቤት ቁጥር / Kebele & House No.
+                      </p>
+                      <p className="text-sm text-slate-700">
+                        {data.kebele} / {data.houseNo}
+                      </p>
+                      <p className="text-sm text-slate-600">{data.kebeleAm}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide">Certificate Number</p>
-                <div className="flex items-center gap-2">
-                  <Hash className="w-4 h-4 text-gray-500" />
-                  <Badge variant="default" className="font-mono">
-                    {data.certificateNumber}
-                  </Badge>
+
+              {/* Right Column */}
+              <div className="space-y-6">
+                {/* Business Information */}
+                <div>
+                  <h3 className="text-base font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-300">
+                    የንግድ መረጃ / Business Information
+                  </h3>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">የንግድ አይነት / Business Type</p>
+                      <p className="font-medium text-slate-900">{data.businessType}</p>
+                      <p className="text-sm text-slate-600">{data.businessTypeAm}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">ESIC ኮድ / ESIC Code</p>
+                      <Badge variant="secondary" className="font-mono bg-slate-200 text-slate-800">
+                        {data.esicSubGroup}
+                      </Badge>
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
+                        የንግድ መግለጫ / Business Description
+                      </p>
+                      <p className="text-sm text-slate-700">{data.businessDescription}</p>
+                      <p className="text-sm text-slate-600">{data.businessDescriptionAm}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Certificate Details */}
+                <div>
+                  <h3 className="text-base font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-300">
+                    የሰርተፊኬት ዝርዝር / Certificate Details
+                  </h3>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
+                        የሰጪው ባለስልጣን / Issuing Authority
+                      </p>
+                      <p className="font-medium text-slate-900 text-sm">{data.issuingAuthority}</p>
+                      <p className="text-sm text-slate-600">{data.issuingAuthorityAm}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">የመስጫ ቀን / Issue Date</p>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-slate-500" />
+                        <p className="font-medium text-slate-900">{data.dateOfIssuance}</p>
+                      </div>
+                      <p className="text-sm text-slate-600">{data.dateOfIssuanceAm}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
+                        የሰርተፊኬት ቁጥር / Certificate Number
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <Hash className="w-4 h-4 text-slate-500" />
+                        <Badge variant="default" className="font-mono bg-slate-700">
+                          {data.certificateNumber}
+                        </Badge>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </Card>
 
           {/* Legal Text */}
-          <Card className="p-6 bg-gray-50 border border-gray-200 mb-6">
-            <div className="text-xs leading-relaxed space-y-2 text-gray-700">
-              <p>ይህ የምስክር ወረቀት የግብር ከፋዩ ብቸኛ እና ዋና ምዝገባ እንደሆነ የሚያሳይ ሲሆን ሁሉንም የቀደሙ የምዝገባ ሰነዶች ይሽራል፡፡</p>
+          <Card className="p-6 bg-slate-50 border border-slate-200 mb-6">
+            <div className="text-xs leading-relaxed space-y-2 text-slate-700">
+              <p className="font-medium">
+                ይህ የምስክር ወረቀት የግብር ከፋዩ ብቸኛ እና ዋና ምዝገባ እንደሆነ የሚያሳይ ሲሆን ሁሉንም የቀደሙ የምዝገባ ሰነዶች ይሽራል፡፡
+              </p>
               <p>ከላይ ባለው መረጃ ላይ ለውጥ ሲደረግ የግብር ከፋዩ ተገቢውን የግብር ቢሮ በመገናኘት የግብር ሰነዱን ለማሻሻል ኃላፊነት አለበት፡፡</p>
-              <p className="pt-2 border-t border-gray-300">
+              <p className="pt-2 border-t border-slate-300 font-medium">
                 This certificate represents the sole and only registration as a taxpayer and supersedes all prior
                 registration documentation.
               </p>
@@ -360,34 +365,16 @@ export default function TaxpayerCertificate({ data }: TaxpayerCertificateProps) 
             </div>
           </Card>
 
-          {/* Footer with Stamp and Certificate Number */}
-          <div className="flex justify-between items-end">
-            <div className="space-y-2">
-              <p className="text-xs text-gray-500 uppercase tracking-wide">Certificate Number</p>
-              <p className="text-lg font-bold text-gray-900 font-mono">{data.certificateNumber}</p>
+          {/* Footer */}
+          <div className="flex justify-between items-center pt-4 border-t border-slate-300">
+            <div>
+              <p className="text-xs text-slate-500 uppercase tracking-wide">Certificate Number</p>
+              <p className="text-lg font-bold text-slate-900 font-mono">{data.certificateNumber}</p>
             </div>
 
-            {/* Official Stamp */}
-            <div className="relative">
-              <div className="w-32 h-32 border-4 border-blue-600 rounded-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg">
-                <div className="text-center">
-                  <div className="text-blue-800 font-bold text-xs">AMHARA</div>
-                  <div className="text-blue-800 font-bold text-xs">REVENUE</div>
-                  <div className="text-blue-800 font-bold text-xs">AUTHORITY</div>
-                  <div className="text-blue-800 text-xs mt-1">OFFICIAL</div>
-                  <div className="text-blue-800 text-xs">SEAL</div>
-                </div>
-              </div>
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                <Verified className="w-4 h-4 text-white" />
-              </div>
-            </div>
-          </div>
-
-          {/* QR Code Placeholder */}
-          <div className="absolute bottom-4 left-4 print:block hidden">
-            <div className="w-16 h-16 bg-gray-200 border border-gray-300 flex items-center justify-center text-xs text-gray-500">
-              QR Code
+            <div className="text-right">
+              <p className="text-xs text-slate-500 uppercase tracking-wide">Digital Verification</p>
+              <p className="text-sm text-slate-700">Scan QR code above to verify</p>
             </div>
           </div>
         </div>
