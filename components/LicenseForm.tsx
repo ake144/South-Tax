@@ -855,13 +855,13 @@ export default function BusinessLicenseGenerator() {
                   </Button>
 
                   <div className="flex gap-4">
-                    <Button
+                    {/* <Button
                       variant="outline"
                       onClick={() => setFormData(dummyData)}
                       className="flex items-center gap-2"
                     >
                       Load Sample Data
-                    </Button>
+                    </Button> */}
 
                     {currentStep < 4 ? (
                       <Button
