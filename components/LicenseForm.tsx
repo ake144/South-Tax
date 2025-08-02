@@ -80,6 +80,7 @@ const dummyData: BusinessData = {
   woredaAm: "መናፈሻ",
   kebele: "KEBELE 08",
   kebeleAm: "ቀበሌ 08",
+  photo:"https://github.com/shadcn.png",
   houseNo: "new",
   telNo: "0947012893",
   fax: "",
@@ -715,7 +716,7 @@ export default function BusinessLicenseGenerator() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 p-4">
+    <div className="min-h-screen  p-4 mt-22">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Business License Generator</h1>

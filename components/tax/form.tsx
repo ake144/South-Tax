@@ -669,7 +669,7 @@ export default function TaxpayerRegistrationGenerator() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 p-4">
+    <div className="min-h-screen p-4 mt-22">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">

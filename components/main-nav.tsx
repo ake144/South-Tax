@@ -59,7 +59,7 @@ export function MainNav() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem asChild>
-                  <Link href="/business">Business License</Link>
+                  <Link href="/business-license">Business License</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/taxPayer">Taxpayer Registration</Link>

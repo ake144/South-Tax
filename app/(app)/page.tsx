@@ -1,39 +1,51 @@
+'use client'
+
 import { MainNav } from "@/components/main-nav"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight, BarChart, Newspaper, LinkIcon, Users, FileText, Receipt, LayoutDashboard } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export default function HomePage() {
+
+ const backgrounds = ["/head.png", "/im1.png", "/im2.png", "/im3.png"];
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % backgrounds.length);
+    }, 5000); // Change image every 5 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <main className="flex-1">
         {/* Hero Section */}
-        <section
-          className="relative w-full h-[600px] bg-cover bg-center flex items-center justify-center text-center p-4"
-          style={{ backgroundImage: 'url("/im1.png")' }}
-        >
-          <div className="absolute inset-0 bg-black opacity-60"></div>
-          <div className="relative z-10 text-white max-w-4xl mx-auto space-y-6">
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg">
-              Empowering South Ethiopia's Prosperity
-            </h1>
-            <p className="text-lg md:text-xl font-light opacity-90">
-              የደቡብ ኢትዮጵያ ክልል ገቢዎች ቢሮ: Building a transparent and efficient revenue system for sustainable development.
-            </p>
-            {/* <Link href="/dashboard">
-              <Button
-                size="lg"
-                className="bg-blue-600 flex items-center justify-center hover:bg-blue-700 text-white text-lg px-8 py-6 rounded-full shadow-xl transition-all duration-300 hover:scale-105 gap-2"
-              >
-                Explore Dashboard
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-            </Link> */}
-          </div>
-        </section>
+     <section
+      className="relative w-full h-[600px] bg-cover bg-center flex items-center justify-center text-center p-4 transition-all duration-1000 ease-in-out"
+      style={{ backgroundImage: `url(${backgrounds[currentImage]})` }}
+    >
+      <div className="absolute inset-0 bg-black/60"></div>
 
+      <div className="relative z-10 text-white max-w-4xl mx-auto space-y-6 animate-fadeIn">
+        <h1 className="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow-xl">
+          Empowering South Ethiopia’s Prosperity
+        </h1>
+        <h2 className="text-2xl md:text-4xl font-bold text-amber-400 drop-shadow-md">
+          የደቡብ ኢትዮጵያ ክልል ገቢዎች ቢሮ
+        </h2>
+        <p className="text-base md:text-lg font-light opacity-90">
+          Building a transparent and efficient revenue system for sustainable development.
+        </p>
+        <p className="text-sm md:text-base font-normal text-gray-200">
+          ለተስፋ እና ለመሻሻል አንፃፃፍ እና አፈፃፀም የተሟላ የገቢ ስርዓትን እንገንባለን።
+        </p>
+      </div>
+    </section>
         {/* Mission, Vision, Values Section */}
         <section className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

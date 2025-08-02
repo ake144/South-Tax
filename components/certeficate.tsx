@@ -102,7 +102,7 @@ export default function Certificate({ data }: CertificateProps) {
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(qrData)}`
 
   return (
-    <div className="max-w-5xl mx-auto space-y-6">
+    <div className="max-w-5xl mx-auto space-y-6 ">
       {/* Action Bar */}
       {/* <Card className="p-4 bg-gradient-to-r from-emerald-50 via-teal-50 to-cyan-50 border-2 border-emerald-200">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -192,14 +192,13 @@ export default function Certificate({ data }: CertificateProps) {
               </div>
 
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-full flex items-center justify-center shadow-xl">
-                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-700 to-teal-700 rounded-full flex items-center justify-center">
-                    <Shield className="text-white font-bold text-lg w-8 h-8" />
-                  </div>
-                </div>
-                <div className="absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
-                  <Verified className="w-3 h-3 text-yellow-800" />
-                </div>
+               <Image
+                 src={'/logo1.png' || "/placeholder.svg"}
+                 alt="Business Owner"
+                 width={120}
+                 height={160}
+                 className="w-full h-full object-cover"
+               />
               </div>
 
               <div className="text-left">
@@ -218,7 +217,7 @@ export default function Certificate({ data }: CertificateProps) {
                   <div className="border-2 border-emerald-300 w-full h-40 bg-emerald-100 flex items-center justify-center rounded-lg overflow-hidden">
                     {data.photo ? (
                       <Image
-                        src={data.photo || "/placeholder.svg"}
+                        src={data.photo}
                         alt="Business Owner"
                         width={120}
                         height={160}
