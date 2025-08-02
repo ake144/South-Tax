@@ -17,7 +17,7 @@ export default function HomePage() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % backgrounds.length);
-    }, 5000); // Change image every 5 seconds
+    }, 5000); 
     return () => clearInterval(interval);
   }, []);
 

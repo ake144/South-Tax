@@ -193,7 +193,7 @@ export default function Certificate({ data }: CertificateProps) {
 
               <div className="relative">
                <Image
-                 src={'/logo1.png' || "/placeholder.svg"}
+                 src="/logo1.png"
                  alt="Business Owner"
                  width={120}
                  height={160}
@@ -208,7 +208,7 @@ export default function Certificate({ data }: CertificateProps) {
             </div>
           </div>
 
-          {/* License Details Header */}
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
             {/* Photo and QR Code */}
             <div className="space-y-6">
