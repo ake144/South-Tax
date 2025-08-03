@@ -1,8 +1,4 @@
-import { DashboardOverview } from "@/components/dashboard/overview-cards"
-import Revenue from "@/components/dashboard/revenue"
-import { Badge } from "@/components/ui/badge"
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import OverviewPage from "./overview/page"
 
 export default function DashboardOverviewPage() {
   return (
@@ -12,7 +8,7 @@ export default function DashboardOverviewPage() {
         <p className="text-gray-600 text-lg">Quick insights into your certificate management system</p>
       </div>
 
-      <Revenue />
+      <OverviewPage />
 
     </div>
   )
