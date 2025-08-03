@@ -7,8 +7,21 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight, BarChart, Newspaper, LinkIcon, Users, FileText, Receipt, LayoutDashboard } from "lucide-react"
 import { useEffect, useState } from "react"
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+import { ContainerTextFlip } from "@/components/ui/container-text-flip";
 
 export default function HomePage() {
+  
+   const words = [
+    { text: "Empowering" },
+    { text: "South Ethiopian" },
+    {
+      text: "Prosperity.",
+      className: "text-blue-500 dark:text-blue-500",
+    },
+  ];
+
+  const words2 = [ "ታማኝ", "ዘመናዊ","የተሟላ", "አስደናቂ"];
 
  const backgrounds = ["/head.png", "/im1.png", "/im2.png", "/im3.png"];
 
@@ -32,18 +45,20 @@ export default function HomePage() {
       <div className="absolute inset-0 bg-black/60"></div>
 
       <div className="relative z-10 text-white max-w-4xl mx-auto space-y-6 animate-fadeIn">
-        <h1 className="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow-xl">
+        {/* <h1 className="text-3xl md:text-5xl font-extrabold leading-tight drop-shadow-xl">
           Empowering South Ethiopia’s Prosperity
-        </h1>
+        </h1> */}
+         <TypewriterEffectSmooth words={words} />
+
         <h2 className="text-2xl md:text-4xl font-bold text-amber-400 drop-shadow-md">
           የደቡብ ኢትዮጵያ ክልል ገቢዎች ቢሮ
         </h2>
         <p className="text-base md:text-lg font-light opacity-90">
           Building a transparent and efficient revenue system for sustainable development.
         </p>
-        <p className="text-sm md:text-base font-normal text-gray-200">
-          ለተስፋ እና ለመሻሻል አንፃፃፍ እና አፈፃፀም የተሟላ የገቢ ስርዓትን እንገንባለን።
-        </p>
+        <div className="text-sm md:text-base font-semibold text-gray-200">
+         <ContainerTextFlip words={words2} /> ለእድገት የተሟላ የገቢ ስርዓትን እንገንባለን።
+        </div>
       </div>
     </section>
         {/* Mission, Vision, Values Section */}

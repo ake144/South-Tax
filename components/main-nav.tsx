@@ -37,20 +37,7 @@ export function MainNav() {
                 About Us
               </Button>
             </Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-1 text-md text-blue-800">
-                  News and Events
-                  <ChevronDown className="w-4 h-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>Announcements</DropdownMenuItem>
-                <DropdownMenuItem>Press Releases</DropdownMenuItem>
-                <DropdownMenuItem>Upcoming Events</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <DropdownMenu>
+             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="flex text-md text-blue-800 items-center gap-1">
                   Services
@@ -64,9 +51,23 @@ export function MainNav() {
                 <DropdownMenuItem asChild>
                   <Link href="/taxPayer">Taxpayer Registration</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>Tax Clearance</DropdownMenuItem>
+               
               </DropdownMenuContent>
             </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="flex items-center gap-1 text-md text-blue-800">
+                  News and Events
+                  <ChevronDown className="w-4 h-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>Announcements</DropdownMenuItem>
+                <DropdownMenuItem>Press Releases</DropdownMenuItem>
+                <DropdownMenuItem>Upcoming Events</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+           
             <Link href="/forms">
               <Button variant="ghost" className={isActive("/forms") ? "font-bold text-blue-600" : "text-md  text-blue-800"}>
                 Forms
@@ -75,6 +76,11 @@ export function MainNav() {
             <Link href="/contact">
               <Button variant="ghost" className={isActive("/contact") ? "font-bold text-blue-600" : "text-md  text-blue-800"}>
                 Contact
+              </Button>
+            </Link>
+              <Link href="/login" className="pr-6 mr-3 items-end justify-end">
+              <Button className={"font-bold bg-blue-600 hover:bg-blue-700 text-white hover:cursor-pointer " }>
+                Login
               </Button>
             </Link>
           </div>
