@@ -62,7 +62,7 @@ export const mockBusinessUsers: BusinessUser[] = [
     status: "Active",
     email: "abebe.b@example.com",
     telNo: "0911234567",
-    region: "Amhara",
+    region: "South Ethiopia",
   },
   {
     id: "bl-002",
@@ -120,7 +120,7 @@ export const mockTaxpayerUsers: TaxpayerUser[] = [
     status: "Registered",
     email: "abel.s@example.com",
     phoneNumber: "0947012893",
-    region: "Amhara",
+    region: "South Ethiopia",
   },
   {
     id: "tp-002",

@@ -34,18 +34,17 @@ const mainItems = [
   { title: "Taxpayer Users", url: "/dashboard/taxPayer", icon: Users },
   { title: "Certificate Management", url: "/dashboard/certificates", icon: Receipt },
   { title: "Revenue", url: "/dashboard/revenue", icon: BarChart3 }, // Placeholder
-  { title: "Analytics", url: "/dashboard/analytics", icon: BarChart3 }, // Placeholder
 ]
 
 const managementItems = [
-  { title: "Pending Approvals", url: "/dashboard/pending", icon: Clock }, // Placeholder
-  { title: "Expiring Soon", url: "/dashboard/expiring", icon: AlertCircle }, // Placeholder
-  { title: "Search & Filters", url: "/dashboard/search", icon: Search }, // Placeholder
-  { title: "Audit Log", url: "/dashboard/audit", icon: Shield }, // Placeholder
+  { title: "Pending Approvals", icon: Clock }, // Placeholder
+  { title: "Expiring Soon",  icon: AlertCircle }, // Placeholder
+  { title: "Search & Filters",  icon: Search }, // Placeholder
+  { title: "Audit Log",  icon: Shield }, // Placeholder
 ]
 
 const systemItems = [
-  { title: "Settings", url: "/dashboard/settings", icon: Settings }, // Placeholder
+  { title: "Settings",icon: Settings }, // Placeholder
 ]
 
 export function AppSidebar() {
@@ -108,16 +107,19 @@ export function AppSidebar() {
           )}
           <SidebarGroupContent>
             <SidebarMenu>
-              {managementItems.map(({ title, url, icon: Icon }) => (
-                <SidebarMenuItem key={title}>
-                  <SidebarMenuButton asChild isActive={isActive(url)}>
-                    <Link href={url}>
-                      <Icon />
-                      {!isCollapsed && <span>{title}</span>}
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {managementItems.map(({ title, icon: Icon }) => {
+                const itemUrl = '/dashboard'; // Default or dynamic URL if needed
+                return (
+                  <SidebarMenuItem key={title}>
+                    <SidebarMenuButton asChild >
+                      <Link href={itemUrl}>
+                        <Icon />
+                        {!isCollapsed && <span>{title}</span>}
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -131,13 +133,11 @@ export function AppSidebar() {
           )}
           <SidebarGroupContent>
             <SidebarMenu>
-              {systemItems.map(({ title, url, icon: Icon }) => (
+              {systemItems.map(({ title, icon: Icon }) => (
                 <SidebarMenuItem key={title}>
-                  <SidebarMenuButton asChild isActive={isActive(url)}>
-                    <Link href={url}>
+                  <SidebarMenuButton  >
                       <Icon />
                       {!isCollapsed && <span>{title}</span>}
-                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

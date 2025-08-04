@@ -46,12 +46,11 @@ export function MainNav() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem asChild>
-                  <Link href="/business-license">Business License</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
                   <Link href="/taxPayer">Taxpayer Registration</Link>
                 </DropdownMenuItem>
-               
+                <DropdownMenuItem asChild>
+                  <Link href="/business-license">Business License</Link>
+                </DropdownMenuItem>    
               </DropdownMenuContent>
             </DropdownMenu>
             <DropdownMenu>

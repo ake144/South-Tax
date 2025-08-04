@@ -91,7 +91,7 @@ export default function TaxpayerCertificate({ data }: TaxpayerCertificateProps) 
     name: data.fullName,
     certificate: data.certificateNumber,
     issued: data.dateOfIssuance,
-    authority: "AMHARA REVENUE AUTHORITY",
+    authority: "South Ethiopia REVENUE AUTHORITY",
   })
 
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(qrData)}`
@@ -183,10 +183,10 @@ export default function TaxpayerCertificate({ data }: TaxpayerCertificateProps) 
 
               <div className="text-center">
                 <p className="text-sm font-semibold text-slate-700 mb-1">የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ</p>
-                <p className="text-sm font-semibold text-slate-700 mb-3">የአማራ ብሔራዊ ክልላዊ መንግስት ገቢዎች ባለስልጣን</p>
+                <p className="text-sm font-semibold text-slate-700 mb-3">የደቡብ ኢትዮጵያ ብሔራዊ ክልላዊ መንግስት ገቢዎች ባለስልጣን</p>
                 <p className="text-sm font-medium text-slate-600 mb-1">Federal Democratic Republic of Ethiopia</p>
                 <p className="text-sm font-medium text-slate-600 mb-4">
-                  AMHARA NATIONAL REGIONAL STATE REVENUE AUTHORITY
+                  South Ethiopia NATIONAL REGIONAL STATE REVENUE AUTHORITY
                 </p>
               </div>
 

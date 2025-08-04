@@ -187,7 +187,7 @@ export default function Certificate({ data }: CertificateProps) {
           <div className="text-center mb-8 border-b-2 border-emerald-600 pb-6">
             <div className="flex items-center justify-center gap-8 mb-6">
               <div className="text-right">
-                <p className="text-sm font-semibold text-emerald-800">South Ethiopia ክልላዊ መንግስት ንግድና ገበያ</p>
+                <p className="text-sm font-semibold text-emerald-800">የደቡብ ኢትዮጵያ ክልላዊ መንግስት ንግድና ገበያ</p>
                 <p className="text-sm font-semibold text-emerald-800">ልማት ቢሮ</p>
               </div>
 
