@@ -325,3 +325,67 @@ export const allCertificates: Certificate[] = [
     region: user.region,
   })),
 ]
+
+
+
+// New interfaces for Receipt Generator
+export interface ReceiptItem {
+  id: string
+  productName: string
+  quantity: number
+  price: number
+  type: string // e.g., "Food", "Service", "Electronics"
+  lineTotal: number
+}
+
+export interface ReceiptData {
+  receiptId: string
+  date: string
+  time: string
+  tin: string
+  businessName: string
+  businessAddress: string
+  businessPhone: string
+  fsNo?: string
+  invoiceReference?: string
+  preparedBy?: string
+  cashierName: string
+  waiterName?: string
+  items: ReceiptItem[]
+  subtotal: number
+  vatRate: number // e.g., 0.15 for 15%
+  vatAmount: number
+  totalAmount: number
+  customerName?: string
+  ercaClb?: string
+}
+
+
+// Mock receipt data for demonstration
+export const mockReceiptData: ReceiptData = {
+  receiptId: "REC-2025-08-001",
+  date: "August 5, 2025",
+  time: "11:26",
+  tin: "90123456",
+  businessName: "YEKATIT HOSPITAL",
+  businessAddress: "R/AS/C BOLE W.09 H.NO NEW AROUND GORO SEFERA",
+  businessPhone: "0116478100/0911360005",
+  fsNo: "00075906",
+  invoiceReference: "CS1-S11-01-0003789",
+  preparedBy: "HEBAT",
+  cashierName: "Hirut G",
+  waiterName: "konjit",
+  items: [
+    { id: "item-1", productName: "BLACK TEA", quantity: 1, price: 26.09, type: "Food", lineTotal: 26.09 },
+    { id: "item-2", productName: "AVOCADO Toast", quantity: 1, price: 208.7, type: "Food", lineTotal: 208.7 },
+    { id: "item-3", productName: "Muffen", quantity: 1, price: 60.87, type: "Food", lineTotal: 60.87 },
+    { id: "item-4", productName: "Egg Sandwich", quantity: 1, price: 200.0, type: "Food", lineTotal: 200.0 },
+    { id: "item-5", productName: "Disposable", quantity: 1, price: 20.0, type: "Other", lineTotal: 20.0 },
+  ],
+  subtotal: 495.66, // Sum of items before VAT
+  vatRate: 0.15, // 15% VAT
+  vatAmount: 74.35, // 15% of 495.66
+  totalAmount: 570.01, // Subtotal + VAT
+  customerName: "EYOB TESFAYE",
+  ercaClb: "CLB00008701",
+}

@@ -50,6 +50,9 @@ export function MainNav() {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/business-license">Business License</Link>
+                </DropdownMenuItem> 
+                 <DropdownMenuItem asChild>
+                  <Link href="/receipt-generator">Receipt Generators</Link>
                 </DropdownMenuItem>    
               </DropdownMenuContent>
             </DropdownMenu>
